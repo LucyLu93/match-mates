@@ -40,3 +40,19 @@
 .read-the-docs {
   color: #888;
 }
+
+.active {
+  color: teal;
+  font-weight: bolder;
+}
+
+.App {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 50px;
+}
+
+.nav button {
+  margin-left: 10px;
+  cursor: pointer;
+}
