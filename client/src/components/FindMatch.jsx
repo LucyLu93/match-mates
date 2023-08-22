@@ -4,8 +4,8 @@ import './FindMatch.css'
 function FindMatch() {
     return (
         <div>
-            <p> Here you will enter your details into a form to
-                find other users in your location.
+            <p> Here you will enter your details into a form field and
+                will be redirected to Matches to find other users.
             </p>
         </div>
     
