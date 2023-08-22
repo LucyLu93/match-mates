@@ -1,0 +1,28 @@
+.h1, h2  {
+ color: Teal;
+}
+
+
+
+.RegisterLogin form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+}
+
+
+.RegisterLogin input {
+    width: 100%;
+    display: block;
+}
+
+.span-2-cols {
+    grid-column: 1 / span 2;
+
+}
+
+.RegisterLogin button {
+    background-color: teal;
+    color: white;
+}

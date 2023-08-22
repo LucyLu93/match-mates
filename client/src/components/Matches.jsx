@@ -4,7 +4,7 @@ import './Matches.css'
 function Matches() {
     return (
         <div>
-            <p>Here you will find upcoming matches</p>
+            <p>Here you will find upcoming matches that you have accepted</p>
         </div>
     
     );

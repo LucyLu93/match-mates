@@ -13,22 +13,18 @@ function RegisterLogin(props) {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-
-        //Pass the Form ('a string') up to parent
-        //Parent will pass down a prop with a cb function
         props.getFormCb(form);
-
-        //Reset Form field
         setForm('');
       };
 
     return (
         
-        <div className='RegisterLoginForm'>
+        <div className='RegisterLogin'>
 
-              <h1>Please Register/Login</h1>
+              <h1>Register your account</h1>
+
                  <h2>Enter your details below</h2>
-
+                 
             <form onSubmit = {handleSubmit}>
                 <label>
                     Please enter your first and lastname:
@@ -38,9 +34,34 @@ function RegisterLogin(props) {
                        onChange={handleChange}
                        />
                 </label>
+                <label>
+                    Please upload your Image URL:
+                  <input
+                      type='text'
+                      name="imageUrl"
+                       value={form.imageUrl}
+                    onChange={(e) => handleChange(e)}
+                   />
+                </label>
+
+                <div className="span-2-cols" style={{ textAlign: 'center'}}>
                 <button type='submit'>Enter</button>
+                </div>
+
             </form>
 
+            <h1>Please Login</h1>
+            <form onSubmit = {handleSubmit}>
+                <label>
+                    Please enter your first and lastname:
+                    <input
+                       type='text'
+                       value={form}
+                       onChange={handleChange}
+                       />
+                </label>
+                <button type='submit'>Go to Profile</button>
+                </form>
         </div>
     );
 
