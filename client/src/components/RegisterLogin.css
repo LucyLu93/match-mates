@@ -1,5 +1,6 @@
 .h1, h2  {
- color: Teal;
+ color: black;
+ font-weight: bold;
 }
 
 
@@ -15,6 +16,13 @@
 .RegisterLogin input {
     width: 100%;
     display: block;
+    
+}
+
+.RegisterLogin label {
+    font-weight: bold;
+    color: black;
+    
 }
 
 .span-2-cols {

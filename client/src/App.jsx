@@ -19,8 +19,7 @@ function App() {
   //navigate("/profile");
   // }
   
-  
-
+ 
 
 
  return (
@@ -47,14 +46,14 @@ function App() {
     
 
       <Routes>
-        <Route path="/" element={<RegisterLogin getFormCb={text => addUser(text)}  /> } />
+        <Route path="/" element={<RegisterLogin  /> } />
         <Route path="/profiles" element={<Profiles /> } />
         <Route path="/findmatch" element={<FindMatch /> } />
         <Route path="/matches" element={<Matches /> } />
         <Route path="/*" element={<Error404 /> } />
       </Routes>
 
-     
+      {/* getFormCb={text => addUserCb(text)} */}
 
 
     </div>

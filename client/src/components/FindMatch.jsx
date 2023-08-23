@@ -1,8 +1,10 @@
 import  { useState } from 'react'
 import './FindMatch.css'
+import { useNavigate } from 'react-router-dom';
 
 function FindMatch() {
     const [findMatches, setFindMatches] = useState ('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFindMatches(e.target.value);
@@ -24,12 +26,13 @@ function FindMatch() {
                        onChange={handleChange}
                        />
                 </label>
+            {/* When this button is clicked I want to navigate to Matches */}
+            <button onClick={() => navigate('Matches')} type='submit'>Enter</button>
             </form>
-            <button>Enter</button>
         </div>
     
     );
 
     }
 
-    export default FindMatch
+    export default FindMatch;

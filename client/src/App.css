@@ -56,3 +56,12 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+.html, body {
+  background: 
+  url(https://padelmagazine.fr/wp-content/uploads/2020/01/Pala-balle-fum%C3%A9e.jpg)
+   no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}

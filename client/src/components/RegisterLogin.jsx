@@ -1,20 +1,23 @@
 import { useState } from 'react'
 import './RegisterLogin.css'
+import { useNavigate } from 'react-router-dom';
 
 function RegisterLogin() {
     //Initialize state for my form field
     const [form, setForm] = useState ('');
+    const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        // handle key presses
-        //Update state of form field
-        setForm(e.target.value);
-      };
+    function handleChange (event) {
+        let { name, value } = event.target;
+    setForm(form => ({ ...form, [name]: value }));
+        setForm(event.target.value);
+      }
     
-      const handleSubmit = (e) => {
-        e.preventDefault();
+      function handleSubmit (event) {
+        event.preventDefault();
+        //props.addUserCb(form); I am unsure of this
         setForm('');
-      };
+      }
 
     return (
         
@@ -22,7 +25,7 @@ function RegisterLogin() {
 
               <h2>Register your account</h2>
 
-                 <h3>Enter your details below</h3>
+                
                  
             <form onSubmit = {handleSubmit}>
                 <label>
@@ -44,7 +47,8 @@ function RegisterLogin() {
                 </label>
 
                 <div className="span-2-cols" style={{ textAlign: 'center'}}>
-                <button type='submit'>Enter</button>
+                {/* When this button is clicked I want to navigate to the profiles */}
+                <button onClick={()=> navigate('Profiles')} type='submit'>Enter</button>
                 </div>
 
             </form>
@@ -59,7 +63,8 @@ function RegisterLogin() {
                        onChange={handleChange}
                        />
                 </label>
-                <button type='submit'>Go to Profile</button>
+                {/* When this button is clicked I want to navigate to the profiles */}
+                <button onClick={()=> navigate('Profiles')} type='submit'>Go to Profile</button>
                 </form>
         </div>
     );

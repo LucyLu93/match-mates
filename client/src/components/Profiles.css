@@ -16,5 +16,7 @@
 .Container li {
     list-style: none;
     display: grid;
+    font-weight: bold;
+    color: black;
 }
 
