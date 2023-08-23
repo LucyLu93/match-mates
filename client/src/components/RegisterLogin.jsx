@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './RegisterLogin.css'
 
-function RegisterLogin(props) {
+function RegisterLogin() {
     //Initialize state for my form field
     const [form, setForm] = useState ('');
 
@@ -13,7 +13,6 @@ function RegisterLogin(props) {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        props.getFormCb(form);
         setForm('');
       };
 
@@ -21,9 +20,9 @@ function RegisterLogin(props) {
         
         <div className='RegisterLogin'>
 
-              <h1>Register your account</h1>
+              <h2>Register your account</h2>
 
-                 <h2>Enter your details below</h2>
+                 <h3>Enter your details below</h3>
                  
             <form onSubmit = {handleSubmit}>
                 <label>
@@ -50,7 +49,7 @@ function RegisterLogin(props) {
 
             </form>
 
-            <h1>Please Login</h1>
+            <h2>Please Login</h2>
             <form onSubmit = {handleSubmit}>
                 <label>
                     Please enter your first and lastname:

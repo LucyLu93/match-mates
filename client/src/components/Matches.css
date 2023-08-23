@@ -1,0 +1,4 @@
+.container li {
+    list-style: none;
+    display: grid;
+}

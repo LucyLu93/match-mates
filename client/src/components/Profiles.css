@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+   
 }
 
 .Container img {
@@ -10,5 +11,10 @@
     object-fit: cover;
     aspect-ratio: 1 / 1;
     cursor: pointer;
-
 }
+
+.Container li {
+    list-style: none;
+    display: grid;
+}
+
