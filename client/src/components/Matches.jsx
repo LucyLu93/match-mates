@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './Matches.css'
 
+
 function Matches() {
     let [matches, setMatches] = useState([]);
 
@@ -82,8 +83,6 @@ function Matches() {
                   <li>
                     Decline match: {match.decline}
                   </li>
-                      
-                  
           </div>
   
          ))}

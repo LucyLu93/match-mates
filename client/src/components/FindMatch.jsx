@@ -27,7 +27,7 @@ function FindMatch() {
                        />
                 </label>
             {/* When this button is clicked I want to navigate to Matches */}
-            <button onClick={() => navigate('Matches')} type='submit'>Enter</button>
+            <button onClick={() => navigate('matches')} type='submit'>Enter</button>
             </form>
         </div>
     
@@ -35,4 +35,4 @@ function FindMatch() {
 
     }
 
-    export default FindMatch;
+    export default FindMatch

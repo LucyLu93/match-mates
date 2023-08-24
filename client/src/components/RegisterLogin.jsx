@@ -22,7 +22,7 @@ function RegisterLogin() {
     return (
         
         <div className='RegisterLogin'>
-
+          
               <h2>Register your account</h2>
 
                 
@@ -52,9 +52,10 @@ function RegisterLogin() {
                 </div>
 
             </form>
-
+            
             <h2>Please Login</h2>
             <form onSubmit = {handleSubmit}>
+            <div className="span-2-cols">
                 <label>
                     Please enter your first and lastname:
                     <input
@@ -63,9 +64,13 @@ function RegisterLogin() {
                        onChange={handleChange}
                        />
                 </label>
+                </div>
+                <div className="span-2-cols" style={{ textAlign: 'center'}}>
                 {/* When this button is clicked I want to navigate to the profiles */}
-                <button onClick={()=> navigate('Profiles')} type='submit'>Go to Profile</button>
+                <button onClick={()=> navigate('profiles')} type='submit'>Go to Profile</button>
+                </div>
                 </form>
+                
         </div>
     );
 
@@ -74,4 +79,4 @@ function RegisterLogin() {
 
 
 
-export default RegisterLogin;
+export default RegisterLogin

@@ -64,13 +64,16 @@ function Profiles() {
         <div className='Profiles'>
             <div className='Container'>
                 <div>
+              <div style={{display: "inline-block;" }}>    
        <img src='https://i.imgur.com/bURG75Y.jpg'></img>
        <img src='https://i.imgur.com/AwPJZvT.jpg'></img>
        <img src='https://i.imgur.com/lYt4YKc.jpg'></img>
        </div>
+       </div>
 
 <div>
     <div className="list">
+    <div style={{display: "inline-block;" }}> 
       <ul>
     
        {users.map ((user, index) => (
@@ -101,6 +104,7 @@ function Profiles() {
 
        ))}
        </ul>
+       </div>
        </div>
 </div>
             </div>

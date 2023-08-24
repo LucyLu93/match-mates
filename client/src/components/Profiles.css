@@ -11,12 +11,14 @@
     object-fit: cover;
     aspect-ratio: 1 / 1;
     cursor: pointer;
+    display: inline-block;
+    
 }
 
 .Container li {
     list-style: none;
-    display: grid;
     font-weight: bold;
     color: black;
+    display: inline-block;
 }
 
