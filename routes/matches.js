@@ -38,4 +38,28 @@ router.post("/", async (req, res) => {
 });
 
 
+router.delete("/:id", async (req, res) => {
+  // Find out if item exists
+  let matches_id = req.params.id;
+  try {
+    let result = await db(`SELECT * FROM usermatches WHERE id = ${matches_id}`);
+    if (result.data.length) {
+      // Item was found!
+      let sql = `DELETE FROM usermatches WHERE id = ${matches_id}`;
+      // Try the DELETE; the results aren't interesting
+      await db(sql);
+      // If we get here, DELETE succeeded; return updated list of userinfo
+      // result = await db("SELECT * FROM userinfo");
+      let matches = result.data; // all the rows found in the DB
+      res.send(matches);
+    } else {
+      // Item not found!
+      res.status(404).send({ error: "Item not found" });
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
+
 module.exports = router;

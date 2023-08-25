@@ -30,7 +30,10 @@ import { Routes, Route,  NavLink, useNavigate } from "react-router-dom";
 // /v1/caloriesburned?activity=padel&weight=158&duration=60' JUST COPIED THE LAST BIT OF LINK
 
 
+
+
 function App() {
+
   // const [loading, setLoading] = useState(false);
   // const [calories, setCalories] = useState(null);
   // const [error, setError] = useState("");
@@ -95,7 +98,7 @@ function App() {
     
 
       <Routes>
-        <Route path="/" element={<RegisterLogin  /> } />
+        <Route path="/" element={<RegisterLogin /> } />
         <Route path="/profiles" element={<Profiles /> } />
         <Route path="/findmatch" element={<FindMatch /> } />
         <Route path="/matches" element={<Matches /> } />
