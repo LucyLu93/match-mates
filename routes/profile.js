@@ -17,12 +17,12 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   // Get data from request body
-  let { firstname, lastname, age, location, wins, losses, draws } = req.body;
+  let { firstname, lastname, age, location, wins, losses, draws, imageUrl } = req.body;
   // Create the SQL statement
   let sql = `
-    INSERT INTO userinfo (firstname, lastname, age, location, wins, losses, draws)
+    INSERT INTO userinfo (firstname, lastname, age, location, wins, losses, draws, imageUrl)
     VALUES ('${firstname}', '${lastname}', '${age}', '${location}',
-     '${wins}', '${losses}', '${draws}')`;
+     '${wins}', '${losses}', '${draws}', '${imageUrl}')`;
 
   // Do the INSERT
   try {

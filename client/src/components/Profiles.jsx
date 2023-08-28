@@ -14,7 +14,7 @@ function Profiles() {
         let response = await fetch('/api/profile');
         if (response.ok) {
             let data = await response.json();
-            console.log(data);
+           setUsers(data);
            
            
         } else {
@@ -35,16 +35,11 @@ function Profiles() {
         <div className='Profiles'>
             <div className='Container'>
                 <div>
-              <div style={{display: "inline-block;" }}>    
-       <img src='https://i.imgur.com/bURG75Y.jpg'></img>
-       <img src='https://i.imgur.com/AwPJZvT.jpg'></img>
-       <img src='https://i.imgur.com/lYt4YKc.jpg'></img>
        </div>
        </div>
 
 <div>
     <div className="list">
-    <div style={{display: "inline-block;" }}> 
       <ul>
     
        {users.map ((user, index) => (
@@ -70,7 +65,10 @@ function Profiles() {
                 <li>
                     Match Draws: {user.draws}
                 </li>
-               
+
+               <li>
+                 Profile picture: <img src={user.imageUrl} />
+                </li> 
         </div>
 
        ))}
@@ -78,8 +76,8 @@ function Profiles() {
        </div>
        </div>
 </div>
-            </div>
-            </div>
+           
+            
             
        
         
@@ -89,6 +87,3 @@ function Profiles() {
     }
 
     export default Profiles
-
-
-

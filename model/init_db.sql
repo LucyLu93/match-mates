@@ -17,11 +17,12 @@ CREATE TABLE userinfo (
     `id` INT NOT NULL AUTO_INCREMENT, 
     `firstname` VARCHAR(255) NOT NULL, 
     `lastname` VARCHAR(255) NOT NULL, 
-    `age` INT NOT NULL, 
+    `age` INT, 
     `location` VARCHAR(255) NOT NULL,
-    `wins` INT NOT NULL,
-    `losses` INT NOT NULL, 
-    `draws` INT NOT NULL,
+    `wins` INT,
+    `losses` INT, 
+    `draws` INT,
+    `imageUrl` VARCHAR(255) NOT NULL,
      PRIMARY KEY (`id`)
     );
 
@@ -39,12 +40,12 @@ CREATE TABLE userinfo (
 -- Add initial data
 --
 INSERT INTO `userinfo` (firstname, lastname, age, location, wins,
-losses, draws)
-    VALUES ('Lucy', 'Mahon', 30, 'Lanzarote', 5, 3, 1);
+losses, draws, imageUrl)
+    VALUES ('Lucy', 'Mahon', 30, 'Lanzarote', 5, 3, 1, 'https://i.imgur.com/bURG75Y.jpg'), 
+    ('Pipa', 'the cat', 2, 'Lanzarote', 6, 2, 1, 'https://i.imgur.com/AwPJZvT.jpg'), 
+    ('Paddy', 'Cooge', 8, 'Lanzarote', 5, 1, 3, 'https://i.imgur.com/iPUgpC4.jpg') ;
     
-INSERT INTO `userinfo` (firstname, lastname, age, location, wins,
-losses, draws)   
-    VALUES ('Pipa', 'the cat', 2, 'Lanzarote', 6, 2, 1);
+
 
  INSERT INTO `usermatches` (player1id, player2id, accept, decline)
     VALUES (1, 2, true, false);  

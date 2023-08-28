@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './RegisterLogin.css'
+// import './RegisterLogin.css'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -11,6 +11,7 @@ const EMPTY_FORM = {
     wins: null,
     losses: null,
     draws: null,
+    imageUrl: "",
 }
 
 function RegisterLogin() {
@@ -32,16 +33,15 @@ function RegisterLogin() {
         setForm(EMPTY_FORM);
      }
 
-      const addUser = async function (text, number) {
+      const addUser = async function (userInfo) {
         // Defining fetch options
-        let newUser = { firstname:text, lastname:text, age:number,
-            location:text, wins:number, losses:number, draws:number }
+       
         let options = {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(newUser)
+          body: JSON.stringify(userInfo)
         };
             // Do the fetch()
             try {
@@ -65,87 +65,130 @@ function RegisterLogin() {
     return (
         
         <div className='RegisterLogin'>
-              <h2>Register your account</h2>  
+              <h2>Register your account</h2> 
+              <div className="row">
+          <div className="offset-md-3 col-md-6">
             <form onSubmit = {handleSubmit}>
-                <label>
+            <div className="mb-3">
+                <label htmlFor="forename" className="form-label">
                     Please enter your firstname:
+                    </label>
                     <input
                        type='text'
+                       className='form-control'
+                       id='forename'
                        name = 'firstname'
                        value={form.firstname}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+                </div>
+                <div className="mb-3">
+                <label htmlFor="surname" className="form-label" >
                     Please enter your lastname:
+                    </label>
                     <input
                        type='text'
+                       className='form-control'
+                       id='surname'
                        name= 'lastname'
                        value={form.lastname}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+                </div>
+                <div className="mb-3" >
+                <label htmlFor="years" className="form-label" >
                    Your age:
+                   </label>
                     <input
                        type= 'number'
+                       className='form-control'
+                       id='years'
                        name='age'
                        value={form.age}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+                     </div>  
+                     <div className="mb-3" >
+                <label htmlFor="area" className="form-label">
                     Please enter your location:
+                    </label>
                     <input
                        type='text'
+                       className='form-control'
+                       id='area'
                        name='location'
                        value={form.location}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="winning" className="form-label" >
                     Please enter your wins:
+                    </label>
                     <input
                        type='number'
+                       className='form-control'
+                       id='winning'
                        name='wins'
                        value={form.wins}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+                </div>
+                <div className="mb-3" >
+                <label htmlFor="losing" className="form-label">
                     Please enter your losses:
+                    </label>
                     <input
                        type='number'
+                       className='form-control'
+                       id='losing'
                        name='losses'
                        value={form.losses}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+               </div>
+               <div className="mb-3">
+                <label htmlFor="drawing" className="form-label">
                     Please enter your draws:
+                    </label>
                     <input
                        type='number'
+                       className='form-control'
+                       id='drawing'
                        name='draws'
                        value={form.draws}
                        onChange={handlechange}
                        />
-                </label>
-                <label>
+                </div>
+                <div className="mb-3">
+                <label htmlFor="image" className="form-label">
                     Please upload your Image URL:
+                    </label>
                   <input
                       type='text'
                       name="imageUrl"
+                      className='form-control'
+                      id='image'
                        value={form.imageUrl}
                     onChange={handlechange}
                    />
-                </label>
+                </div>
 
                 <div className="span-2-cols" style={{ textAlign: 'center'}}>
                 {/* When this button is clicked I want to navigate to the profiles */}
-                <button type='submit'>Enter</button>
+                <button
+                                type="submit"
+                                className="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                  >
+                  Enter
+                  </button>
                 </div>
 
             </form>
+            </div>
+            </div>
         </div>
     );
 
