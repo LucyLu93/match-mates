@@ -9,6 +9,12 @@
   .card-text {
     list-style: none;
 }
+.card-img-top {
+  max-width: 100%;
+  height: auto;
+  flex-grow: 1;
+  object-fit: contain;
+}
 /* 
   .card-body{
     border: 2px solid #ccc;
@@ -20,11 +26,6 @@
     flex-direction: column;
   }   
 
-.card-img-top {
-        max-width: 100%;
-        height: auto;
-        flex-grow: 1;
-        object-fit: contain;
-}
+
 
 */

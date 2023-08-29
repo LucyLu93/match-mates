@@ -25,7 +25,7 @@ function Profiles() {
     <div className="cardcontainer">
         {users.map((user) => (
       <div className="card" key={user.id}>
-        <img className="card-img-top" src="https://i.imgur.com/AwPJZvT.jpg" alt="Card image cap" />
+        <img className="card-img-top" src={user.imageUrl} alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">{user.firstname} {user.lastname}</h5>
             <div>
