@@ -29,15 +29,10 @@ import { Routes, Route,  NavLink, useNavigate } from "react-router-dom";
 // MY REQUIRED PARAMS ARE ACTIVITY(PADEL),WEIGHT(158LBS) AND DURATION(60).
 // /v1/caloriesburned?activity=padel&weight=158&duration=60' JUST COPIED THE LAST BIT OF LINK
 
-
-
-
 function App() {
-
-  // const [loading, setLoading] = useState(false);
   // const [calories, setCalories] = useState(null);
-  // const [error, setError] = useState("");
-  
+
+  //Fitness API 
   //Everything API related will happen here
   // const getCalories = async (??) => {
     //Put together places to get our complete url
@@ -75,7 +70,7 @@ function App() {
 
 
  return (
-    <div className="App">
+     <div className="App">
       <nav>
         <button>
           <NavLink to="/">Register/Login</NavLink>
@@ -92,7 +87,8 @@ function App() {
           <button>
           <NavLink to="/matches">Matches</NavLink>
           </button>
-      </nav>
+      </nav> 
+
 
 
     

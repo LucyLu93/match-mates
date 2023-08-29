@@ -61,15 +61,16 @@ function RegisterLogin() {
             }
           };
       
+          //Hello
 
     return (
         
         <div className='RegisterLogin'>
-              <h2>Register your account</h2> 
+              <h1>Register your account</h1> 
               <div className="row">
-          <div className="offset-md-3 col-md-6">
+          <div className="grid text-center">
             <form onSubmit = {handleSubmit}>
-            <div className="mb-3">
+            <div className="g-col-6">
                 <label htmlFor="forename" className="form-label">
                     Please enter your firstname:
                     </label>
@@ -82,7 +83,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
                 </div>
-                <div className="mb-3">
+                <div className="g-col-6">
                 <label htmlFor="surname" className="form-label" >
                     Please enter your lastname:
                     </label>
@@ -95,7 +96,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
                 </div>
-                <div className="mb-3" >
+                <div className="g-col-6" >
                 <label htmlFor="years" className="form-label" >
                    Your age:
                    </label>
@@ -108,7 +109,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
                      </div>  
-                     <div className="mb-3" >
+                     <div className="g-col-6" >
                 <label htmlFor="area" className="form-label">
                     Please enter your location:
                     </label>
@@ -121,7 +122,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
               </div>
-              <div className="mb-3">
+              <div className="g-col-6">
                 <label htmlFor="winning" className="form-label" >
                     Please enter your wins:
                     </label>
@@ -134,7 +135,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
                 </div>
-                <div className="mb-3" >
+                <div className="g-col-6" >
                 <label htmlFor="losing" className="form-label">
                     Please enter your losses:
                     </label>
@@ -147,7 +148,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
                </div>
-               <div className="mb-3">
+               <div className="g-col-6">
                 <label htmlFor="drawing" className="form-label">
                     Please enter your draws:
                     </label>
@@ -160,7 +161,7 @@ function RegisterLogin() {
                        onChange={handlechange}
                        />
                 </div>
-                <div className="mb-3">
+                <div className="g-col-6">
                 <label htmlFor="image" className="form-label">
                     Please upload your Image URL:
                     </label>
@@ -178,7 +179,7 @@ function RegisterLogin() {
                 {/* When this button is clicked I want to navigate to the profiles */}
                 <button
                                 type="submit"
-                                className="btn btn-primary"
+                                className="btn btn-danger"
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModal"
                   >

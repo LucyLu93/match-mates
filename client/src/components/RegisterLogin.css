@@ -1,27 +1,24 @@
-.h1, h2  {
- color: black;
+.h1  {
+ color: red;
  font-weight: bold;
 }
 
-
-
-.RegisterLogin form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    text-align: left;
-}
 
 
 .RegisterLogin input {
     width: 100%;
     display: block;
     
+    
 }
 
-.RegisterLogin label {
+.form-label {
     font-weight: bold;
-    color: black;
+    color:black;
+    gap: 10px;
+    margin-bottom: 10px;
+    
+    
     
 }
 
@@ -30,7 +27,5 @@
 
 }
 
-.RegisterLogin button {
-    background-color: teal;
-    color: white;
-}
+
+

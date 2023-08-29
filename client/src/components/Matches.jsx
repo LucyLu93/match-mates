@@ -2,8 +2,20 @@ import React, { useEffect, useState } from "react";
 import './Matches.css'
 
 
+//Weather API 
+const WEATHER_URL = 
+'https://api.openweathermap.org/data/2.5/weather?';
+
+const API_KEY = 'd8543f0158144a732fbf2285cfa57e16';
+const PARAMS = `appid=${API_KEY}&units=metric&q=`;
+
+
 function Matches() {
     let [matches, setMatches] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [weather, setWeather] = useState(null);
+    const [error, setError] = useState("");
+
 
     useEffect(() => {
         getMatches()
@@ -55,19 +67,77 @@ function Matches() {
               console.log(`Network error: ${err.message}`);
             }
           };
+
+
+    //Weather API
+
+    function Weather() {
+     let d = weather.data;
+      return (
+          <div className='Weather'>
+              <h2>Current Weather in {d.name}, {d.sys.country}</h2>
+  
+              <p>
+                  {d.weather[0].main},
+                  {' '}
+                  {d.main.temp} C
+                  
+                  </p>
+  
+          </div>
+      );
+  
+  }   
+       
+  const getWeather = async (location) => {
+    let url = `${WEATHER_URL}${PARAMS}${location}`;
+
+    setLoading(true);
+
+    setWeather();
+    setError('');
+
+    try {
+      //Make request to weather site(always use async with await-in above function)
+      let response = await fetch(url);
+      if(response.ok){
       
+      let data = await response.json(); 
+      //Save weather data in state
+      setWeather(data);
+      } else {
+      
+      setError(`Server error: ${response.status}${response.statusText}`);
+      }
     
-      
-
-
-
-
+      setError(`Network error: ${err.message}`);
+      } catch(err) {
+        
+      }
+      setLoading(false);
+    };  
+    
+    
 
 
     return (
         <div className="list">
             <div className="container">
-              <h2>Here are the upcoming matches in your area</h2>
+              <h2>Here are the upcoming matches and weather in your area!</h2>
+             
+      <Weather getWeather={location} />
+   
+   {/* Only show weather component if there is weather data */}
+     {weather && <Weather data={weather} />}
+ 
+   {/* Only show the error if there is one */}
+     {error && <h2 style={{ color:'purple'}}>{error}</h2>}
+ 
+   {loading && <h2>Loading weather...</h2>}
+
+
+
+
         <ul>
          {matches.map ((match, index) => (
           <div key={index}>

@@ -19,6 +19,7 @@ function FindMatch() {
         navigate('/matches');
         setFindMatches(EMPTY_FORM);
 
+        //Hello
 
       };
 
@@ -27,14 +28,15 @@ function FindMatch() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Please enter your location to find matches in your area:
+
                     <input
                        type='text'
-                       value={findMatches}
+                       value={findMatches.location}
                        onChange={handleChange}
                        />
                 </label>
             {/* When this button is clicked I want to navigate to Matches */}
-            <button type='submit'>Enter</button>
+            <button type='submit' className="btn btn-danger">Enter</button>
             </form>
         </div>
     

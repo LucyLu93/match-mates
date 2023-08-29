@@ -1,4 +1,7 @@
 .form, label {
     font-weight: bold;
     color: black;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size:larger;
 }
