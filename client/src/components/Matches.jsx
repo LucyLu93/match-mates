@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Matches.css'
-
+import { useLocation } from "react-router-dom"; 
 
 //Weather API 
 const WEATHER_URL = 
@@ -16,9 +16,12 @@ function Matches() {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
 
+    const {state} = useLocation();
+    const {location} = state;
 
     useEffect(() => {
-        getMatches()
+        getMatches();
+        getWeather(location);
       }, []);
 
     const getMatches = async () => {
@@ -72,7 +75,7 @@ function Matches() {
     //Weather API
 
     function Weather() {
-     let d = weather.data;
+     let d = weather;
       return (
           <div className='Weather'>
               <h2>Current Weather in {d.name}, {d.sys.country}</h2>
@@ -110,9 +113,8 @@ function Matches() {
       setError(`Server error: ${response.status}${response.statusText}`);
       }
     
-      setError(`Network error: ${err.message}`);
       } catch(err) {
-        
+        setError(`Network error: ${err.message}`);
       }
       setLoading(false);
     };  
@@ -124,11 +126,9 @@ function Matches() {
         <div className="list">
             <div className="container">
               <h2>Here are the upcoming matches and weather in your area!</h2>
-             
-      <Weather getWeather={location} />
-   
+                
    {/* Only show weather component if there is weather data */}
-     {weather && <Weather data={weather} />}
+     {weather && <Weather/>}
  
    {/* Only show the error if there is one */}
      {error && <h2 style={{ color:'purple'}}>{error}</h2>}

@@ -2,12 +2,8 @@ import  { useState } from 'react'
 import './FindMatch.css'
 import { useNavigate } from 'react-router-dom';
 
-const EMPTY_FORM = {
- location: ""
-}
-
 function FindMatch() {
-    const [findMatches, setFindMatches] = useState (EMPTY_FORM);
+    const [findMatches, setFindMatches] = useState("");
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -16,10 +12,12 @@ function FindMatch() {
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/matches');
-        setFindMatches(EMPTY_FORM);
+        // passing the location (called findMatches) to the Matches component.
+        //done through the navigate using a state object (new concept)
+        navigate('/matches', {state: {location: findMatches}});
+        setFindMatches("");
 
-        //Hello
+        
 
       };
 
@@ -31,7 +29,7 @@ function FindMatch() {
 
                     <input
                        type='text'
-                       value={findMatches.location}
+                       value={findMatches}
                        onChange={handleChange}
                        />
                 </label>
