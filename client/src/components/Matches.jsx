@@ -11,19 +11,19 @@ const PARAMS = `appid=${API_KEY}&units=metric&q=`;
 
 
 function Matches() {
-    let [matches, setMatches] = useState([]);
+    // let [matches, setMatches] = useState([]);
     const [loading, setLoading] = useState(false);
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
-    const [userDetails, setUserDetails] = useState(null);
+    const [userDetails, setUserDetails] = useState([]); // changed from null to []
 
     const {state} = useLocation();
     const {location, userId} = state;
 
     useEffect(() => {
-        getMatches();
+        // getMatches();
         getWeather(location);
-        fetchUserDetails(userId);
+       fetchUserDetails(userId);
       }, []);
 
 const fetchUserDetails = async (userId) => {
@@ -34,7 +34,8 @@ const fetchUserDetails = async (userId) => {
     const response = await fetch(`/api/profile/${userId}`); // Replace with your API endpoint for fetching user details
     if (response.ok) {
       const data = await response.json();
-      // console.log(data);
+       //console.log(data);
+       //console.log(data[0].firstname)
       setUserDetails(data); // Save user details in state
     } else {
       setError(`Error fetching user details: ${response.status} ${response.statusText}`);
@@ -42,59 +43,9 @@ const fetchUserDetails = async (userId) => {
   } catch (err) {
     setError(`Network error: ${err.message}`);
   }
-
-
 }
 
-    const getMatches = async () => {
-    try {
-        let response = await fetch('/api/matches');
-        if (response.ok) {
-            let data = await response.json();
-            // console.log(data);
-            setMatches(data);
-        } else {
-            console.log(`Server Error: ${response.status} ${response.statusText}`);
-        }
-
-    } catch (err) {
-        console.log(`Network error: ${err.message}`);
-    }
-};
-    
-
-//       const addMatch = async text => {
-//         // Create user obj
-//         let matchObj = { player1id: text, player2id: text, accept:Boolean, decline:Boolean };
-    
-//         // Defining fetch options
-//         let options = {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json"
-//           },
-//           body: JSON.stringify(matchObj)
-//         };
-//             // Do the fetch()
-//             try {
-//               let response = await fetch("/api/matches", options);
-//               if (response.ok) {
-//                 // Good response; wait for data
-//                 let data = await response.json();
-//                 // Save in state
-//                 setMatches(data);
-//               } else {
-//                 // Server reached but can't fulfil request
-//                 console.log(`Server error: ${response.status} ${response.statusText}`);
-//               }
-//             } catch (err) {
-//               // Server not reached
-//               console.log(`Network error: ${err.message}`);
-//             }
-//           };
-
-
-    //Weather API
+     //Weather API
 
     function Weather() {
      let d = weather;
@@ -149,21 +100,23 @@ const fetchUserDetails = async (userId) => {
             <div className="container">
               <h2>Here are the upcoming matches and weather in your area!</h2>
                 
-   {/* Only show weather component if there is weather data */}
-     {weather && <Weather/>}
  
-   {/* Only show the error if there is one */}
-     {error && <h2 style={{ color:'purple'}}>{error}</h2>}
+                    {weather && <Weather/>}
  
-   {loading && <h2>Loading weather...</h2>}
+           {/* Only show the error if there is one */}
+          {error && <h2 style={{ color:'purple'}}>{error}</h2>}
+ 
+                 {loading && <h2>Loading weather...</h2>}
 
 
 
- {userDetails.map ((user, index) => (
-  <div key={index}>
-    <p>{user.firstname} has been sent your challenge request!</p>
-  </div>
- ))}
+
+                 {userDetails.map ((user, index) => (
+                      <div key={index}>
+      <p>{user.firstname} has been sent your challenge request, you will hear
+          from them shortly!</p>
+               </div>
+ ))} 
    </div>
          </div>
     );
@@ -171,6 +124,61 @@ const fetchUserDetails = async (userId) => {
     }
 
     export default Matches
+
+
+
+//  Below is the code for when I was displaying my usermatches table info in my matches component
+
+// const getMatches = async () => {
+//   try {
+//       let response = await fetch('/api/matches');
+//       if (response.ok) {
+//           let data = await response.json();
+//           // console.log(data);
+//           setMatches(data);
+//       } else {
+//           console.log(`Server Error: ${response.status} ${response.statusText}`);
+//       }
+
+//   } catch (err) {
+//       console.log(`Network error: ${err.message}`);
+//   }
+// };
+  
+
+//       const addMatch = async text => {
+//         // Create user obj
+//         let matchObj = { player1id: text, player2id: text, accept:Boolean, decline:Boolean };
+    
+//         // Defining fetch options
+//         let options = {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: JSON.stringify(matchObj)
+//         };
+//             // Do the fetch()
+//             try {
+//               let response = await fetch("/api/matches", options);
+//               if (response.ok) {
+//                 // Good response; wait for data
+//                 let data = await response.json();
+//                 // Save in state
+//                 setMatches(data);
+//               } else {
+//                 // Server reached but can't fulfil request
+//                 console.log(`Server error: ${response.status} ${response.statusText}`);
+//               }
+//             } catch (err) {
+//               // Server not reached
+//               console.log(`Network error: ${err.message}`);
+//             }
+//           };
+
+
+
+
 
         {/* <ul>
          {matches.map ((match, index) => (
@@ -192,3 +200,4 @@ const fetchUserDetails = async (userId) => {
          ))}
          </ul> */}
       
+ 
