@@ -14,18 +14,27 @@ router.get("/", (req, res) => {
 });
 
 // GET user by ID
-router.get("/:id", function (req, res) {
-  // Find User with requested ID
-  const User = data.find((u) => u.id === Number(req.params.id));
-
-  if (User) {
-    // User was found; return it
-    res.send(User);
-  } else {
-    // User was not found; return 404 error
-    res.status(404).send({ error: "User does not exist" });
+router.get("/:id", async (req, res) => {
+  // Find out if item exists
+  let user_id = req.params.id;
+  try {
+    let result = await db(`SELECT * FROM userInfo WHERE id = ${user_id}`);
+    if (result.data.length) {
+      // Item was found!
+    
+      let userinfo = result.data; // all the rows found in the DB
+      res.send(userinfo);
+    } else {
+      // Item not found!
+      res.status(404).send({ error: "Item not found" });
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message });
   }
 });
+
+
+
 
 
 

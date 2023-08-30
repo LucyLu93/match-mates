@@ -15,18 +15,25 @@ router.get("/", (req, res) => {
 });
 
 // GET matches by ID
-router.get("/:id", function (req, res) {
-  // Find Matches with requested ID
-  const Matches = data.find((m) => m.id === Number(req.params.id));
-
-  if (Matches) {
-    // Matches was found; return it
-    res.send(Matches);
-  } else {
-    // Matches was not found; return 404 error
-    res.status(404).send({ error: "Matches does not exist" });
+router.get("/:id", async (req, res) => {
+  // Find out if item exists
+  let matches_id = req.params.id;
+  try {
+    let result = await db(`SELECT * FROM usermatches WHERE id = ${matches_id}`);
+    if (result.data.length) {
+      // Item was found!
+    
+      let usermatches = result.data; // all the rows found in the DB
+      res.send(usermatches);
+    } else {
+      // Item not found!
+      res.status(404).send({ error: "Item not found" });
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message });
   }
 });
+
 
 
 

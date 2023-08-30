@@ -66,7 +66,7 @@ function RegisterLogin() {
     return (
         
         <div className='RegisterLogin'>
-              <h1>Register your account</h1> 
+              <h1>Match Mates</h1> 
               <div className="row">
           <div className="grid text-center">
             <form onSubmit = {handleSubmit}>

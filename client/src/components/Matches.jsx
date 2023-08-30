@@ -34,8 +34,8 @@ const fetchUserDetails = async (userId) => {
     const response = await fetch(`/api/profile/${userId}`); // Replace with your API endpoint for fetching user details
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      // setUserDetails(data); // Save user details in state
+      // console.log(data);
+      setUserDetails(data); // Save user details in state
     } else {
       setError(`Error fetching user details: ${response.status} ${response.statusText}`);
     }
@@ -164,7 +164,13 @@ const fetchUserDetails = async (userId) => {
     <p>{user.firstname} has been sent your challenge request!</p>
   </div>
  ))}
+   </div>
+         </div>
+    );
 
+    }
+
+    export default Matches
 
         {/* <ul>
          {matches.map ((match, index) => (
@@ -185,10 +191,4 @@ const fetchUserDetails = async (userId) => {
 {/*   
          ))}
          </ul> */}
-         </div>
-         </div>
-    );
-
-    }
-
-    export default Matches
+      
