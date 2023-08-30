@@ -14,7 +14,7 @@ function FindMatch() {
         e.preventDefault();
         // passing the location (called findMatches) to the Matches component.
         //done through the navigate using a state object (new concept)
-        navigate('/matches', {state: {location: findMatches}});
+        navigate('/profiles', {state: {location: findMatches}});
         setFindMatches("");
 
         
@@ -25,7 +25,7 @@ function FindMatch() {
         <div>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Please enter your location to find matches in your area:
+                    Please enter your town/city to find matches in your area:
 
                     <input
                        type='text'

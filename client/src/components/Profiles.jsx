@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Profiles.css";
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 function Profiles() {
   const [users, setUsers] = useState([]);
@@ -9,11 +10,11 @@ function Profiles() {
   }, []);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate('/findMatch');
+  const {state} = useLocation();
+  const {location} = state;
+  const handleSubmit = (user) => { //add an argument of player clicked and use inside matches page
     
-
+    navigate('/matches', {state: {location, userId: user.id}} )
 
   };
 
@@ -39,8 +40,9 @@ function Profiles() {
         <div className="card-body">
           <h5 className="card-title">{user.firstname} {user.lastname}</h5>
             <div>
-            <ul className="card-text">
-            <a onSubmit={handleSubmit} href="#"className="btn btn-danger">Challenge {user.firstname}!</a> 
+            <ul className="card-text"> 
+            {/* arrow function and pass user name as an argument*/}
+            <a onClick={() => handleSubmit(user)} href="#"className="btn btn-danger">Challenge {user.firstname}!</a> 
             <li>
                  Age: {user.age}
              </li>

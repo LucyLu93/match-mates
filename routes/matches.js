@@ -14,6 +14,20 @@ router.get("/", (req, res) => {
     .catch(err => res.status(500).send(err));
 });
 
+// GET matches by ID
+router.get("/:id", function (req, res) {
+  // Find Matches with requested ID
+  const Matches = data.find((m) => m.id === Number(req.params.id));
+
+  if (Matches) {
+    // Matches was found; return it
+    res.send(Matches);
+  } else {
+    // Matches was not found; return 404 error
+    res.status(404).send({ error: "Matches does not exist" });
+  }
+});
+
 
 
 router.post("/", async (req, res) => {

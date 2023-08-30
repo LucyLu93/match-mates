@@ -5,3 +5,7 @@
     margin-top: 10px;
     font-size:larger;
 }
+
+.btn btn-danger  {
+    align-content: center !important;
+}

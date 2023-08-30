@@ -13,6 +13,21 @@ router.get("/", (req, res) => {
     .catch(err => res.status(500).send(err));
 });
 
+// GET user by ID
+router.get("/:id", function (req, res) {
+  // Find User with requested ID
+  const User = data.find((u) => u.id === Number(req.params.id));
+
+  if (User) {
+    // User was found; return it
+    res.send(User);
+  } else {
+    // User was not found; return 404 error
+    res.status(404).send({ error: "User does not exist" });
+  }
+});
+
+
 
 
 router.post("/", async (req, res) => {

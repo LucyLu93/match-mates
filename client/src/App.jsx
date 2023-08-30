@@ -84,9 +84,9 @@ function App() {
           <NavLink to="/findmatch">FindMatch</NavLink>
           </button>
 
-          <button>
+          {/* <button>
           <NavLink to="/matches">Matches</NavLink>
-          </button>
+          </button> */}
       </nav> 
 
 

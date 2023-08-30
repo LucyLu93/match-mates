@@ -15,14 +15,36 @@ function Matches() {
     const [loading, setLoading] = useState(false);
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
+    const [userDetails, setUserDetails] = useState(null);
 
     const {state} = useLocation();
-    const {location} = state;
+    const {location, userId} = state;
 
     useEffect(() => {
         getMatches();
         getWeather(location);
+        fetchUserDetails(userId);
       }, []);
+
+const fetchUserDetails = async (userId) => {
+  try {
+    setLoading(true);
+    setError("");
+    
+    const response = await fetch(`/api/profile/${userId}`); // Replace with your API endpoint for fetching user details
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // setUserDetails(data); // Save user details in state
+    } else {
+      setError(`Error fetching user details: ${response.status} ${response.statusText}`);
+    }
+  } catch (err) {
+    setError(`Network error: ${err.message}`);
+  }
+
+
+}
 
     const getMatches = async () => {
     try {
@@ -41,35 +63,35 @@ function Matches() {
 };
     
 
-      const addMatch = async text => {
-        // Create user obj
-        let matchObj = { player1id: text, player2id: text, accept:Boolean, decline:Boolean };
+//       const addMatch = async text => {
+//         // Create user obj
+//         let matchObj = { player1id: text, player2id: text, accept:Boolean, decline:Boolean };
     
-        // Defining fetch options
-        let options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(matchObj)
-        };
-            // Do the fetch()
-            try {
-              let response = await fetch("/api/matches", options);
-              if (response.ok) {
-                // Good response; wait for data
-                let data = await response.json();
-                // Save in state
-                setMatches(data);
-              } else {
-                // Server reached but can't fulfil request
-                console.log(`Server error: ${response.status} ${response.statusText}`);
-              }
-            } catch (err) {
-              // Server not reached
-              console.log(`Network error: ${err.message}`);
-            }
-          };
+//         // Defining fetch options
+//         let options = {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: JSON.stringify(matchObj)
+//         };
+//             // Do the fetch()
+//             try {
+//               let response = await fetch("/api/matches", options);
+//               if (response.ok) {
+//                 // Good response; wait for data
+//                 let data = await response.json();
+//                 // Save in state
+//                 setMatches(data);
+//               } else {
+//                 // Server reached but can't fulfil request
+//                 console.log(`Server error: ${response.status} ${response.statusText}`);
+//               }
+//             } catch (err) {
+//               // Server not reached
+//               console.log(`Network error: ${err.message}`);
+//             }
+//           };
 
 
     //Weather API
@@ -137,8 +159,14 @@ function Matches() {
 
 
 
+ {userDetails.map ((user, index) => (
+  <div key={index}>
+    <p>{user.firstname} has been sent your challenge request!</p>
+  </div>
+ ))}
 
-        <ul>
+
+        {/* <ul>
          {matches.map ((match, index) => (
           <div key={index}>
               <li>
@@ -153,10 +181,10 @@ function Matches() {
                   <li>
                     Decline match: {match.decline}
                   </li>
-          </div>
-  
+          </div> */}
+{/*   
          ))}
-         </ul>
+         </ul> */}
          </div>
          </div>
     );

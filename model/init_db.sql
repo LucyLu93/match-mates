@@ -41,9 +41,9 @@ CREATE TABLE userinfo (
 --
 INSERT INTO `userinfo` (firstname, lastname, age, location, wins,
 losses, draws, imageUrl)
-    VALUES ('Lucy', 'Mahon', 30, 'Lanzarote', 5, 3, 1, 'https://i.imgur.com/bURG75Y.jpg'), 
-    ('Pipa', 'the cat', 2, 'Lanzarote', 6, 2, 1, 'https://i.imgur.com/AwPJZvT.jpg'), 
-    ('Paddy', 'Cooge', 8, 'Lanzarote', 5, 1, 3, 'https://i.imgur.com/iPUgpC4.jpg') ;
+    VALUES ('Lucy', 'Mahon', 30, 'Las Palmas', 5, 3, 1, 'https://i.imgur.com/bURG75Y.jpg'), 
+    ('Pipa', 'the cat', 2, 'Las Palmas', 6, 2, 1, 'https://i.imgur.com/AwPJZvT.jpg'), 
+    ('Paddy', 'Cooge', 8, 'Las Palmas', 5, 1, 3, 'https://i.imgur.com/iPUgpC4.jpg') ;
     
 
 

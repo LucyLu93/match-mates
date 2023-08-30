@@ -1,6 +1,12 @@
-.h1  {
- color: red;
+.RegisterLogin h1  {
+ color: white !important;
  font-weight: bold;
+ font-family: fantasy;
+ font-style: oblique;
+ outline-style: double;
+ outline-color: white;
+ margin-top: 20px;
+ outline-offset: 10px;
 }
 
 
@@ -25,6 +31,10 @@
 .span-2-cols {
     grid-column: 1 / span 2;
 
+}
+
+button {
+    margin-top: 10px;
 }
 
 
