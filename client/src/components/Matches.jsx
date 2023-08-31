@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './Matches.css'
 import { useLocation } from "react-router-dom"; 
+import { useRef } from "react";
 
 //Weather API 
 const WEATHER_URL = 
@@ -17,8 +18,19 @@ function Matches() {
     const [error, setError] = useState("");
     const [userDetails, setUserDetails] = useState([]); // changed from null to []
 
-    const {state} = useLocation();
-    const {location, userId} = state;
+    // start of new code
+const locObj = useLocation();  // get the browser's location obj
+const locRef = useRef(null);  // create a ref, initially null
+// If this is the first render, save the location obj in the ref
+if (locRef.current === null) {
+    locRef.current = locObj;
+}
+
+// Get the state from locRef, which we know was valid during the first render
+const {state} = locRef.current;
+// end of new code
+
+const {location, userId} = state;
 
     useEffect(() => {
         // getMatches();
@@ -98,10 +110,10 @@ const fetchUserDetails = async (userId) => {
     return (
         <div className="list">
             <div className="container">
-              <h2>Here are the upcoming matches and weather in your area!</h2>
+              <h3>Here are the upcoming matches and weather in your area!</h3>
                 
  
-                    {weather && <Weather/>}
+                   <h1> {weather && <Weather/>} </h1>
  
            {/* Only show the error if there is one */}
           {error && <h2 style={{ color:'purple'}}>{error}</h2>}
@@ -113,8 +125,8 @@ const fetchUserDetails = async (userId) => {
 
                  {userDetails.map ((user, index) => (
                       <div key={index}>
-      <p>{user.firstname} has been sent your challenge request, you will hear
-          from them shortly!</p>
+      <p><h2>{user.firstname} has been sent your challenge request, you will hear
+          from them shortly!</h2></p>
                </div>
  ))} 
    </div>

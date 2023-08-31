@@ -1,6 +1,17 @@
-.container li {
-    list-style: none;
-    display: grid;
-    font-weight: bold;
+.container h1 {
+    color:red ;
+    
+    
+}
+
+.container h2 {
+    font-weight: Bold;
+    gap: 20px;
     color: black;
+
+   
+}
+
+.container h3 {
+ font-style: italic;
 }
