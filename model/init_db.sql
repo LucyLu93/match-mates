@@ -43,8 +43,8 @@ INSERT INTO `userinfo` (firstname, lastname, age, location, wins,
 losses, draws, imageUrl)
     VALUES ('Lucy', 'Mahon', 30, 'Las Palmas', 5, 3, 1, 'https://i.imgur.com/bURG75Y.jpg'), 
     ('Pipa', 'the cat', 2, 'Las Palmas', 6, 2, 1, 'https://i.imgur.com/AwPJZvT.jpg'), 
-    ('Paddy', 'Cooge', 8, 'Las Palmas', 5, 1, 3, 'https://i.imgur.com/iPUgpC4.jpg') ;
-    
+    ('Paddy', 'Cooge', 8, 'Las Palmas', 5, 1, 3, 'https://i.imgur.com/iPUgpC4.jpg'),
+    ('Claudia', 'Mendes', 34, 'London', 4,2,1,'https://allforpadel.com/modules/prestablog/views/img/grid-for-1-7/up-img/thumb_443.jpg?fe20184dc9eeb29446905190827b1c70');
 
 
  INSERT INTO `usermatches` (player1id, player2id, accept, decline)

@@ -25,7 +25,7 @@ function RegisterLogin() {
         let { name, value } = event.target;
     setForm(form => ({ ...form, [name]: value }));
       }
-    
+
       const handleSubmit =  event => {
         event.preventDefault();
         navigate('/findmatch')
