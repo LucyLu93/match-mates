@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const EMPTY_FORM = {
     firstname: "",
     lastname: "",
-    age: null,
+    age: "",
     location: "",
-    wins: null,
-    losses: null,
-    draws: null,
+    wins: "",
+    losses: "",
+    draws: "",
     imageUrl: "",
 }
 
@@ -25,7 +25,7 @@ function RegisterLogin() {
         let { name, value } = event.target;
     setForm(form => ({ ...form, [name]: value }));
       }
-
+    
       const handleSubmit =  event => {
         event.preventDefault();
         navigate('/findmatch')

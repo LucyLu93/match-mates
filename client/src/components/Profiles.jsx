@@ -10,8 +10,8 @@ function Profiles() {
   }, []);
   const navigate = useNavigate();
 
-  const {state} = useLocation();
-  const {location} = state;
+  const {state} = useLocation() || {};
+  const {location} = state || {};
   const handleSubmit = (user) => { //add an argument of user and use inside matches page
     
     navigate('/matches', {state: {location, userId: user.id}} )
