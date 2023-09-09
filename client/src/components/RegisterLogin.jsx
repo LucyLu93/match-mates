@@ -28,7 +28,7 @@ function RegisterLogin() {
     
       const handleSubmit =  event => {
         event.preventDefault();
-        navigate('/findmatch')
+        navigate('/profiles')
          addUser(form);
         setForm(EMPTY_FORM);
      }
