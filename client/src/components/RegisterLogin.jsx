@@ -1,76 +1,83 @@
-import { useState } from 'react'
-import './RegisterLogin.css'
+import React, { useState, useEffect } from 'react';
+import './RegisterLogin.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const EMPTY_FORM = {
-    firstname: "",
-    lastname: "",
-    age: "",
-    location: "",
-    wins: "",
-    losses: "",
-    draws: "",
-    imageUrl: "",
-}
+  firstname: '',
+  lastname: '',
+  age: '',
+  location: '',
+  wins: '',
+  losses: '',
+  draws: '',
+  imageUrl: '',
+};
 
 function RegisterLogin() {
-    //Initialize state for my form field
-    const [form, setForm] = useState (EMPTY_FORM);
-    const [users, setUsers] = useState ([]);
-    
-    const navigate = useNavigate();
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [users, setUsers] = useState([]);
+  const [showModal, setShowModal] = useState(false); // Modal visibility
+  const navigate = useNavigate();
 
-    const handlechange = event => {
-        let { name, value } = event.target;
-    setForm(form => ({ ...form, [name]: value }));
-      }
-    
-      const handleSubmit =  event => {
-        event.preventDefault();
-        navigate('/profiles')
-         addUser(form);
-        setForm(EMPTY_FORM);
-     }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
 
-      const addUser = async function (userInfo) {
-        // Defining fetch options
-       
-        let options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(userInfo)
-        };
-            // Do the fetch()
-            try {
-              let response = await fetch("/api/profile", options);
-              if (response.ok) {
-                // Good response; wait for data
-                let data = await response.json();
-                // Save in state
-                setUsers(data);
-              } else {
-                // Server reached but can't fulfil request
-                console.log(`Server error: ${response.status} ${response.statusText}`);
-              }
-            } catch (err) {
-              // Server not reached
-              console.log(`Network error: ${err.message}`);
-            }
-          };
-      
-          //Hello
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addUser(form);
+    setForm(EMPTY_FORM);
+    setShowModal(true); // Show modal after form submission
+  };
 
-    return (
-        
-        <div className='RegisterLogin'>
-              <h1>Match Mates</h1> 
-              <div className="row">
-          <div className="grid text-center">
-            <form onSubmit = {handleSubmit}>
-            <div className="g-col-6">
+  const addUser = async function (userInfo) {
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userInfo)
+    };
+        // Do the fetch()
+        try {
+          let response = await fetch("/api/profile", options);
+          if (response.ok) {
+            // Good response; wait for data
+            let data = await response.json();
+            // Save in state
+            setUsers(data);
+          } else {
+            // Server reached but can't fulfil request
+            console.log(`Server error: ${response.status} ${response.statusText}`);
+          }
+        } catch (err) {
+          // Server not reached
+          console.log(`Network error: ${err.message}`);
+        }
+  };
+
+
+  useEffect(() => {
+    // Use a setTimeout to close the modal after 3 seconds
+    if (showModal) {
+      const timer = setTimeout(() => {
+        setShowModal(false);
+        navigate('/profiles');
+      }, 3000);
+
+      return () => clearTimeout(timer); // Clear the timer if the component unmounts
+    }
+  }, [showModal, navigate]);
+
+
+  return (
+    <div className="RegisterLogin">
+      <h1>Match Mates</h1>
+      <div className="row">
+        <div className="grid text-center">
+          <form onSubmit={handleSubmit}>
+          <div className="g-col-6">
                 <label htmlFor="forename" className="form-label">
                     Please enter your firstname:
                     </label>
@@ -80,7 +87,7 @@ function RegisterLogin() {
                        id='forename'
                        name = 'firstname'
                        value={form.firstname}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
                 </div>
                 <div className="g-col-6">
@@ -93,7 +100,7 @@ function RegisterLogin() {
                        id='surname'
                        name= 'lastname'
                        value={form.lastname}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
                 </div>
                 <div className="g-col-6" >
@@ -106,7 +113,7 @@ function RegisterLogin() {
                        id='years'
                        name='age'
                        value={form.age}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
                      </div>  
                      <div className="g-col-6" >
@@ -119,7 +126,7 @@ function RegisterLogin() {
                        id='area'
                        name='location'
                        value={form.location}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
               </div>
               <div className="g-col-6">
@@ -132,7 +139,7 @@ function RegisterLogin() {
                        id='winning'
                        name='wins'
                        value={form.wins}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
                 </div>
                 <div className="g-col-6" >
@@ -145,7 +152,7 @@ function RegisterLogin() {
                        id='losing'
                        name='losses'
                        value={form.losses}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
                </div>
                <div className="g-col-6">
@@ -158,7 +165,7 @@ function RegisterLogin() {
                        id='drawing'
                        name='draws'
                        value={form.draws}
-                       onChange={handlechange}
+                       onChange={handleChange}
                        />
                 </div>
                 <div className="g-col-6">
@@ -171,31 +178,48 @@ function RegisterLogin() {
                       className='form-control'
                       id='image'
                        value={form.imageUrl}
-                    onChange={handlechange}
+                    onChange={handleChange}
                    />
                 </div>
-
-                <div className="span-2-cols" style={{ textAlign: 'center'}}>
-                {/* When this button is clicked I want to navigate to the profiles */}
-                <button
-                                type="submit"
-                                className="btn btn-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                  >
-                  Enter
-                  </button>
-                </div>
-
-            </form>
+            <div className="span-2-cols" style={{ textAlign: 'center' }}>
+              {/* Show the modal when the button is clicked */}
+              <button
+                type="submit"
+                className="btn btn-danger"
+              >
+                Enter
+              </button>
             </div>
-            </div>
+          </form>
         </div>
-    );
+      </div>
 
+    
+      {/* Bootstrap Modal */}
+      <div
+        className={`modal ${showModal ? 'show' : ''}`}
+        style={{ display: showModal ? 'block' : 'none' }}
+        id="exampleModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-body" id="exampleModalLabel">
+                Thank You for your registration!
+              </h5>
+            </div>
+            <div className="modal-body">
+              Now, choose your mate.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-
-
-
-export default RegisterLogin
+export default RegisterLogin;
