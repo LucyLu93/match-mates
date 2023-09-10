@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
   // Find out if item exists
   let user_id = req.params.id;
   try {
-    let result = await db(`SELECT * FROM userInfo WHERE id = ${user_id}`);
+    let result = await db(`SELECT * FROM userinfo WHERE id = ${user_id}`);
     if (result.data.length) {
       // Item was found!
     

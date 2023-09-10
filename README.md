@@ -21,15 +21,59 @@
 
 ## Setup
 
-### Dependencies
+### Installation
 
-Run `npm install` in the project folder to install dependencies related to Express (the server).
+1. Clone the repository:
 
-`cd client` and run `npm install` install dependencies related to React (the client).
+   ```sh
+   git clone https://github.com/LucyLu93/match-mates.git
+   ```
 
-Run `npm start` in another terminal to start the server (backend).
+2. Create a database in your MySQL (or your preferred database) and name it "databse_padel".
 
-Run `npm run dev` in the client (frontend).
+3. Create an `.env` file in your project's root directory, and add the following configuration to it:
+
+   ```sh
+   DB_HOST=localhost
+   DB_USER=your_user
+   DB_PASS=your_password
+   DB_NAME=database_padel
+   ```
+
+4. Open a terminal and run the following commands to set up your project:
+
+   ```sh
+   npm install
+   npm run migrate
+   cd client
+   npm install
+   ```
+
+### Starting
+
+To start the server:
+
+```sh
+npm start
+```
+
+To start the client:
+
+```sh
+cd client
+npm run dev
+```
+
+Visit your browser at [http://localhost:5000](http://localhost:5000).
+
+Enjoy!
+
+## Contact
+
+If you have any further questions, feel free to reach out to me at [@LucyLu93](https://github.com/LucyLu93).
+
+
+
 
 ## API Routes
 1. https://rapidapi.com/apininjas/api/calories-burned-by-api-ninjas/
