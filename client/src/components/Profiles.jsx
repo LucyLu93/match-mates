@@ -5,8 +5,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 function Profiles() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+
   const { state } = useLocation() || {};
   const { location } = state || {};
+
 
   useEffect(() => {
     getUsers();
@@ -43,7 +45,7 @@ function Profiles() {
     <div className="cardcontainer">
       {users.map((user) => (
         <div className="card" key={user.id}>
-          <img className="card-img-top" src={user.imageUrl} alt="Card image cap" />
+          <img className="card-img card-img-top" src={user.imageUrl} alt="Card image cap" />
           <div className="card-body">
             <h5 className="card-title">{user.firstname} {user.lastname}</h5>
             <div>
@@ -62,5 +64,8 @@ function Profiles() {
     </div>
   );
 }
+
+
+
 
 export default Profiles;
