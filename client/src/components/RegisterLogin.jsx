@@ -208,8 +208,8 @@ function RegisterLogin() {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-body" id="exampleModalLabel">
-                Thank You for your registration!
+              <h5 className="modal-title" id="exampleModalLabel">
+                {`Thank You for your registration ${form.firstname}!`}
               </h5>
             </div>
             <div className="modal-body">

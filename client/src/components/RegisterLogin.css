@@ -38,5 +38,11 @@ button {
     margin-top: 10px;
 }
 
-
+.modal-content {
+    border-radius: 5px;
+    background: rgba(237, 234, 234, 0.9);
+    box-shadow: 1px 1px 50px #000;
+    width: 600px; 
+    height: 200px;
+}
 
