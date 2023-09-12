@@ -13,10 +13,13 @@
 
   }
 
-.card-img {
+.cardimg {
   max-width: 100% !important;
   height: auto !important;
   border-color: 4px solid red;
+  border-radius: 100%;
+  object-fit: cover; /*to fit the images*/
+  aspect-ratio: 1/1;
 }
 
 .card-title {

@@ -20,11 +20,11 @@ function Profiles() {
 
   const getUsers = async () => {
     try {
-      const { location: locationFilter } = state || {};
+      
       
       let apiUrl = "/api/profile";
-      if (locationFilter) {
-        apiUrl += `?location=${encodeURIComponent(locationFilter)}`;
+      if (location) {
+        apiUrl += `?location=${encodeURIComponent(location)}`;
       }
 
         // Fetch profiles with location filter
@@ -45,7 +45,7 @@ function Profiles() {
     <div className="cardcontainer">
       {users.map((user) => (
         <div className="card" key={user.id}>
-          <img className="card-img card-img-top" src={user.imageUrl} alt="Card image cap" />
+          <img className="cardimg" src={user.imageUrl} alt="Card image cap" />
           <div className="card-body">
             <h5 className="card-title">{user.firstname} {user.lastname}</h5>
             <div>
