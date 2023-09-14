@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-//Hello get location query
+// get location query
 router.get("/", (req, res) => {
   
   let location = req.query.location;

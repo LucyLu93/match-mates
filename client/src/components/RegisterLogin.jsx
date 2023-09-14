@@ -27,8 +27,9 @@ function RegisterLogin() {
   const handleSubmit = (event) => {
     event.preventDefault();
     addUser(form);
-    setForm(EMPTY_FORM);
+    
     setShowModal(true); // Show modal after form submission
+    
   };
 
   const addUser = async function (userInfo) {
@@ -214,6 +215,7 @@ function RegisterLogin() {
             </div>
             <div className="modal-body">
               Now, choose your mate.
+              <h1>🎉</h1>
             </div>
           </div>
         </div>

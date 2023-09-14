@@ -7,16 +7,26 @@
     padding: 20px;
   
   }
+
+  .cardcontainer :hover {
+    transform: translate3D(0,-15px,0) scale(1.1);
+    
+  }
+
   .card-text {
     list-style: none;
     text-align: left;
 
   }
 
+.card :hover {
+    transform: translate3D(0,-1px,0) scale(1.03); /*to resalt from the rest*/
+}
+
 .cardimg {
   max-width: 100% !important;
   height: auto !important;
-  border-color: 4px solid red;
+  border: 2px solid red;
   border-radius: 100%;
   object-fit: cover; /*to fit the images*/
   aspect-ratio: 1/1;
