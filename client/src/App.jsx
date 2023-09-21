@@ -76,22 +76,11 @@ function App() {
           <NavLink to="/">Register/Login</NavLink>
           </button>
 
-          {/* <button>
-          <NavLink to="/profiles">Profiles</NavLink>
-          </button> */}
-
           <button>
           <NavLink to="/findmatch">FindMatch</NavLink>
           </button>
 
-          {/* <button>
-          <NavLink to="/matches">Matches</NavLink>
-          </button> */}
       </nav> 
-
-
-
-    
 
       <Routes>
         <Route path="/" element={<RegisterLogin /> } />

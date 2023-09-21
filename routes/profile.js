@@ -3,15 +3,30 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-//Hello
+// get location query
 router.get("/", (req, res) => {
-  // Send back the full list of userinfo
-  db("SELECT * FROM userinfo ORDER BY id ASC;")
-    .then(results => {
+  
+  let location = req.query.location;
+  //conditional statement for when the location is empty
+  if (!location || location.trim() ==="") {
+    db("SELECT * FROM userinfo ORDER BY id ASC;")
+    .then(result => {
+      res.send(result.data);
+    })
+    .catch(err => res.status(500).send(err));
+  } else {
+//location
+  db(`SELECT * FROM userinfo WHERE location = "${location}"`)
+    
+  .then(results => {
       res.send(results.data);
     })
     .catch(err => res.status(500).send(err));
+  }
 });
+
+  
+
 
 // GET user by ID
 router.get("/:id", async (req, res) => {

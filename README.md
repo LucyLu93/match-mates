@@ -11,10 +11,10 @@
 <img src ='https://i.imgur.com/QUd5sHw.png'>
 
 
-
 ###### Below is a UserFlow diagram of the app starting with registration and ending with access to all three parts of the website.
-<img src='https://i.imgur.com/nlOOClw.png'>
 
+
+<img src='https://i.imgur.com/nlOOClw.png'>
 
 
 <img src='https://i.imgur.com/Bgm6zsX.png'>
@@ -76,17 +76,16 @@ If you have any further questions, feel free to reach out to me at [@LucyLu93](h
 
 
 ## API Routes
+
 1. https://rapidapi.com/apininjas/api/calories-burned-by-api-ninjas/
 2. https://openweathermap.org/
 
-
 ## Future features
+
 1. Improving the matches component
 2. Making the profile cards clickable links to focus on one player at a time and to see more details including a calendar of when they are free
-3. Adding the fitness API 
+3. Adding the fitness API
 4. Improvement of styling
 
 
-
-
-######  _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
+### _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._

@@ -1,29 +1,37 @@
 import React, { useEffect, useState } from "react";
 import "./Profiles.css";
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Profiles() {
   const [users, setUsers] = useState([]);
-  useEffect(() => {
-    getUsers();
-  }, []);
   const navigate = useNavigate();
 
-  const {state} = useLocation();
-  const {location} = state;
-  const handleSubmit = (user) => { //add an argument of user and use inside matches page
-    
-    navigate('/matches', {state: {location, userId: user.id}} )
+  const { state } = useLocation() || {};
+  const { location } = state || {};
 
+
+  useEffect(() => {
+    getUsers();
+  }, [location]); // Add location to the dependency array
+
+  const handleSubmit = (user) => {
+    navigate('/matches', { state: { location, userId: user.id } });
   };
 
   const getUsers = async () => {
     try {
-      let response = await fetch("/api/profile");
-      if (response.ok) {
-        let data = await response.json();
-        setUsers(data);
+      
+      
+      let apiUrl = "/api/profile";
+      if (location) {
+        apiUrl += `?location=${encodeURIComponent(location)}`;
+      }
+
+        // Fetch profiles with location filter
+        let response = await fetch(apiUrl);
+        if (response.ok) {
+          let data = await response.json();
+          setUsers(data);
       } else {
         console.log(`Server Error: ${response.status} ${response.statusText}`);
       }
@@ -32,42 +40,32 @@ function Profiles() {
     }
   };
 
+
   return (
     <div className="cardcontainer">
-        {users.map((user) => (
-      <div className="card" key={user.id}>
-        <img className="card-img-top" src={user.imageUrl} alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">{user.firstname} {user.lastname}</h5>
+      {users.map((user) => (
+        <div className="card" key={user.id}>
+          <img className="cardimg" src={user.imageUrl} alt="Card image cap" />
+          <div className="card-body">
+            <h5 className="card-title">{user.firstname} {user.lastname}</h5>
             <div>
-            <ul className="card-text"> 
-            {/* arrow function and pass user name as an argument*/}
-            <a onClick={() => handleSubmit(user)} href="#"className="btn btn-danger">Challenge {user.firstname}!</a> 
-            <li>
-                 Age: {user.age}
-             </li>
-             <li>
-                 Location: {user.location}
-             </li>
-             <li>
-                Match Wins: {user.wins}
-             </li>
-             <li>
-                 Match Losses: {user.losses}
-             </li>
-             <li>
-                 Match Draws: {user.draws}
-             </li>
-             </ul>
-             </div>
+              <ul className="card-text">
+                <a onClick={() => handleSubmit(user)} href="#" className="btn btn-danger">Challenge {user.firstname}!</a>
+                <li>Age: {user.age}</li>
+                <li>Location: {user.location}</li>
+                <li>Match Wins: {user.wins}</li>
+                <li>Match Losses: {user.losses}</li>
+                <li>Match Draws: {user.draws}</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
       ))}
     </div>
   );
 }
 
+
+
+
 export default Profiles;
-
-
-        
